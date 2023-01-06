@@ -1,5 +1,6 @@
 package com.burtsev.rest_test.model;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "users")
+@Data
 @Entity
 public class User implements UserDetails {
     @Id
@@ -50,12 +52,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     @Override
     public String getUsername() {
         return email;
@@ -63,21 +59,6 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public Set<Role> getRoles() {
-        return roles;
-    }
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
 //        public void setRoles(String[] roles) {
@@ -97,24 +78,6 @@ public class User implements UserDetails {
     public String getRolesToString() {
         String s = getRoles().toString().replaceAll("^\\[|\\]$", "");
         return s.replace("ROLE_", "");
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

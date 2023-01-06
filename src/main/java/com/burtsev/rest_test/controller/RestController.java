@@ -25,14 +25,6 @@ public class RestController {
         return userService.getAllUsers();
     }
 
-//    @GetMapping("/users/{id}")
-//    public User getOneUser(@PathVariable("id") int id) {
-//        User user = userService.getUser(id);
-//        if (user == null) {
-//            throw new UserNotFoundException("Пользователь с id " + id + " не найден.");
-//        }
-//        return user;
-//    }
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getOneUser(@PathVariable("id") int id) {
         try {
@@ -41,7 +33,6 @@ public class RestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
     //    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/admins/new")
@@ -56,10 +47,15 @@ public class RestController {
 
 
 
-//    @PostMapping("/admin/{id}/edit")
-//    public ResponseEntity<HttpStatus> editUser(@PathVariable ("id")int id){
-//
-//    }
+    @PutMapping("/admins/{id}/edit")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") int id) {
+        try {
+            userService.update(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        }
+    }
 
 
 
