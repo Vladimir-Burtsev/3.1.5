@@ -1,17 +1,13 @@
 package com.burtsev.rest_test.model;
 
-import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "roles")
 public class Role implements GrantedAuthority{
     @Id
@@ -21,6 +17,42 @@ public class Role implements GrantedAuthority{
     @Transient
     @ManyToMany(mappedBy = "roles")
     private List<User> users = new ArrayList<>();
+
+    public Role() {
+    }
+
+    public Role(int id) {
+        this.id = id;
+    }
+
+    public Role(int id, String rolename) {
+        this.id = id;
+        this.rolename = rolename;
+    }
+
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+
+    public String getRolename() {
+        return rolename;
+    }
+
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
+    }
+
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     @Override
     public String getAuthority() {

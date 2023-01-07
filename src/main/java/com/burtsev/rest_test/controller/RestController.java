@@ -30,8 +30,12 @@ public class RestController {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @GetMapping("/admins")
-    public List<User> showAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List <User>> showAllUsers() {
+        try {
+            return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/users/{id}")
@@ -79,10 +83,10 @@ public class RestController {
 //        return new ResponseEntity<>(user,HttpStatus.OK);
 //    }
 
-    @PatchMapping("/admins/{id}/edit")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    @PutMapping("/admins/{id}/edit")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable ("id") int id) {
         try {
-            userService.update(user);
+            userService.update(user, id);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);

@@ -46,7 +46,7 @@ public class AdminController_v2 {
         if (bindingResult.hasErrors())
             return "admin/admin_view";
 
-        usersService.update(user);
+        usersService.update(user, id);
         System.out.println(user.getUsername());
         return "redirect:/admin";
     }
