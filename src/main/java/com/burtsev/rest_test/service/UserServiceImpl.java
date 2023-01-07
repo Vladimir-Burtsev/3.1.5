@@ -20,9 +20,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     UserRepository userRepository;
-
     RoleRepository roleRepository;
-
     BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
 

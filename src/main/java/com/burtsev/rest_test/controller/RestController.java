@@ -26,8 +26,6 @@ public class RestController {
     }
 
     @Autowired
-
-
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @GetMapping("/admins")
     public ResponseEntity<List <User>> showAllUsers() {
@@ -47,7 +45,7 @@ public class RestController {
         }
     }
 
-    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/admins/new")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         try {
@@ -58,31 +56,6 @@ public class RestController {
         }
     }
 
-//    @PostMapping("/admins/{id}/edit")
-//    public ResponseEntity<User> userEdit(@PathVariable("id") int id, @RequestBody User user) {
-//        if(user.getPassword().length()!=60) {
-//            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        }
-//        Set<Role> resultList = new HashSet<>();
-//        Set<Role> roleList = user.getRoles();
-//        Optional<Role> roleUser = userService.findById(1);
-//        Optional<Role> roleAdmin = userService.findById(2);
-//        if (roleList.isEmpty() || roleList==null) {
-//            resultList.add(roleUser.get());
-//        } else if (roleList.get(0).getRole()=="ROLE_ADMIN"
-//        roleList.iterator().next();) {
-//            resultList.add(roleUser.get());
-//        }
-//        if (roleList.get(0).getId() == 1) {
-//            resultList.add(roleUser.get());
-//        } else if (roleList.get(0).getId() == 2) {
-//            resultList.add(roleAdmin.get());
-//        }
-//        user.setRoles(resultList);
-//        service.updateUser(id,user);
-//        return new ResponseEntity<>(user,HttpStatus.OK);
-//    }
-
     @PutMapping("/admins/{id}/edit")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable ("id") int id) {
         try {
@@ -92,7 +65,4 @@ public class RestController {
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }
     }
-
-
-
 }

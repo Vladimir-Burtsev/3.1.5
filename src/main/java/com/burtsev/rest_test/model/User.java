@@ -13,8 +13,6 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
     @NotNull
     private String password;
     @Column(unique = true)
@@ -24,14 +22,11 @@ public class User implements UserDetails {
     @NotEmpty(message = "The field cannot be empty")
     @Size(min = 2, max = 20, message = "Name to short (2) or long (30)")
     private String firstName;
-
     @NotEmpty(message = "The field cannot be empty")
     @Size(min = 2, max = 20, message = "Name to short (2) or long (30)")
     private String lastName;
-
     @Min(value = 0, message = "Age must be greater than 0" )
     private int age;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @NotNull
     @JoinTable(
@@ -44,13 +39,13 @@ public class User implements UserDetails {
     }
 
     //constructor not password.
-    public User(String email, String firstName, String lastName, int age, Set<Role> roles) {
-
+    public User(int id, String password, String email, String firstName, String lastName, int age, Set<Role> roles) {
+        this.id = id;
+        this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-
         this.roles = roles;
     }
 
