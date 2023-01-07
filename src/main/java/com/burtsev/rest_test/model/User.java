@@ -1,6 +1,6 @@
 package com.burtsev.rest_test.model;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,7 +12,11 @@ import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "users")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class User implements UserDetails {
     @Id
@@ -32,25 +36,13 @@ public class User implements UserDetails {
     @Min(value = 0, message = "Age must be greater than 0" )
     private int age;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @NotEmpty
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
-
-    public User() {
-    }
-
-    public User(String email, String password, String firstName, String lastName, int age, Set<Role> roles) {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.roles = roles;
-    }
 
     @Override
     public String getUsername() {
