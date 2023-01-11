@@ -28,7 +28,7 @@ public class User implements UserDetails {
     @Min(value = 0, message = "Age must be greater than 0" )
     private int age;
     @ManyToMany(fetch = FetchType.LAZY)
-    @NotNull
+//    @NotNull
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -100,6 +100,7 @@ public class User implements UserDetails {
     public void setAge(int age) {
         this.age = age;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return  roles;

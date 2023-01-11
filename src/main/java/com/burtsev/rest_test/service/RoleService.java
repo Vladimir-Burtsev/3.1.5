@@ -5,5 +5,11 @@ import com.burtsev.rest_test.model.Role;
 import java.util.List;
 
 public interface RoleService {
-    List<Role> getAll ();
+    void add(Role role);
+
+    List<Role> getListRoles();
+
+    List<Role> getRolesListById(List<Integer> id);
+
+    Role getRoleById(int id);
 }
