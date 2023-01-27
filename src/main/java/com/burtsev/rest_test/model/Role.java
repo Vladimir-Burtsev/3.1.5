@@ -21,13 +21,13 @@ public class Role implements GrantedAuthority{
     public Role() {
     }
 
-    public Role(int id) {
-        this.id = id;
+    public Role(String role) {
+        this.rolename = role;
     }
 
-    public Role(int id, String rolename) {
+    public Role(int id, String role) {
         this.id = id;
-        this.rolename = rolename;
+        this.rolename = role;
     }
 
     public int getId() {

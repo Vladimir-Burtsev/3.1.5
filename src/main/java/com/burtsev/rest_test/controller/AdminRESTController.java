@@ -2,6 +2,7 @@ package com.burtsev.rest_test.controller;
 
 import com.burtsev.rest_test.model.*;
 import com.burtsev.rest_test.service.*;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,9 +54,12 @@ public class AdminRESTController {
 
 
     @PatchMapping("/users/{id}")
-    public ResponseEntity<HttpStatus> userSaveEdit(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> userSaveEdit(@RequestBody @NotNull User user, @PathVariable Integer id) {
+        user.setId(id);
+        System.out.println(user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.update(user);
+        userService.update(user, id);
+
         return new ResponseEntity<> (HttpStatus.OK);
     }
 }

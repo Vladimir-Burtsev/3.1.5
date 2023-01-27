@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
     <title>Admin panel</title>
 </head>
@@ -43,6 +44,7 @@
                             type="button" role="tab"
                             aria-controls="v-pills-admin"
                             aria-selected="true"
+
                     >Admin</button>
                     <!--                            user page marker-->
                     <button class="nav-link"
@@ -211,8 +213,7 @@
                             <form class="text-center" id="formForEditing">
 
                                 <div class="mb-3">
-                                    <label for="edit-id"
-                                           class="col-form-label d-flex justify-content-center" ><b>ID</b>:</label>
+                                    <label for="edit-id"class="col-form-label d-flex justify-content-center" ><b>ID</b>:</label>
                                     <input disabled type="text"
                                            class="form-control"
                                            id="edit-id"
@@ -251,6 +252,14 @@
                                            name="email">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="edit-password"
+                                           class="col-form-label d-flex justify-content-center"><b>Password</b>:</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           id="edit-password"
+                                           name="password">
+                                </div>
+                                <div class="mb-3">
                                     <label for="edit-role"
                                            class="col-form-label d-flex justify-content-center"><b>Role</b>:</label>
                                     <select multiple
@@ -259,10 +268,10 @@
                                             class="form-select"
                                             size="2">
                                         <option value="2">
-                                            ADMIN
+                                            USER
                                         </option>
                                         <option value="1">
-                                            USER
+                                            ADMIN
                                         </option>
                                     </select>
                                 </div>
@@ -271,9 +280,8 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input onclick="editUser()"
-                                   class="btn btn-primary"
-                                   value="Edit">
+                            <button type="button" class="btn btn-primary" id="editBtn"
+                                    onclick="editUser(); getAdminPage()">Edit</button>
                         </div>
                     </div>
                 </div>
@@ -285,15 +293,14 @@
 </div>
 
 
-<!--<script src="js/bootstrap.min.js"></script>-->
-<!--<script src="js/scripts.js"></script>-->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-<!--<script src="/adminJs/adminPage.js"></script>-->
+<script src="/adminJs/adminPage.js"></script>
 <script src="/adminJs/createUserPage.js"></script>
 <script src="/adminJs/editModalPage.js"></script>
 <script src="/adminJs/deleteModalPage.js"></script>
-<script th:src="@{/adminJs/adminPage.js}"></script>
+<!--<script th:src="@{/adminJs/adminPage.js}"></script>-->
 </body>
 </html>

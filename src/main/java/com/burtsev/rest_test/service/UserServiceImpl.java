@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     @Transactional
-    public void update(User user) {
+    public void update(User user, int id) {
         User oldUser = getById(user.getId());
         if (oldUser.getPassword().equals(user.getPassword()) || "".equals(user.getPassword())) {
             user.setPassword(oldUser.getPassword());

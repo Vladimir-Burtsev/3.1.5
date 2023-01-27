@@ -28,15 +28,19 @@ function loadTableData(listAllUser) {
     <td>${user.email}</td>
     <td>${roles}</td>
 <td>
-        <button class="btn btn-primary" data-bs-toogle="modal"
+        <button type="button" class="btn btn-primary" data-bs-toogle="modal"
         data-bs-target="#editModal" 
-        onclick="editModalData(${user.id})">Edit</button>
+        onclick="loadDataForEditModal(${user.id})">Edit</button>
     </td>
-        <td>
+       
+
+<!--
+    <td>
         <button class="btn btn-danger" data-bs-toogle="modal"
         data-bs-target="#deleteModal" 
         onclick="deleteModalData(${user.id})">Delete</button>
     </td>
+    -->
 </tr>`
     }
     tableBody.innerHTML = dataHtml;

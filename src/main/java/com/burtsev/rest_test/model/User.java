@@ -39,8 +39,7 @@ public class User implements UserDetails {
     }
 
     //constructor not password.
-    public User(int id, String password, String email, String firstName, String lastName, int age, Set<Role> roles) {
-        this.id = id;
+    public User(String password, String email, String firstName, String lastName, int age, Set<Role> roles) {
         this.password = password;
         this.email = email;
         this.firstName = firstName;
