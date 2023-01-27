@@ -34,13 +34,13 @@ function loadTableData(listAllUser) {
     </td>
        
 
-<!--
+
     <td>
         <button class="btn btn-danger" data-bs-toogle="modal"
         data-bs-target="#deleteModal" 
         onclick="deleteModalData(${user.id})">Delete</button>
     </td>
-    -->
+   
 </tr>`
     }
     tableBody.innerHTML = dataHtml;

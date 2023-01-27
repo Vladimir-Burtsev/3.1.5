@@ -5,8 +5,8 @@ const lastname_ed = document.getElementById('edit-last_name');
 const age_ed = document.getElementById('edit-age');
 const email_ed = document.getElementById('edit-email');
 const editModal = document.getElementById("editModal");
+const closeEditButton = document.getElementById("editClose")
 const bsEditModal = new bootstrap.Modal(editModal);
-
 
 async function loadDataForEditModal(id) {
     const  urlDataEd = 'api/admins/users/' + id;
@@ -54,8 +54,7 @@ async function editUser() {
     }
     console.log(urlEdit,method)
     await fetch(urlEdit,method).then(() => {
-        // document.getElementById("editModal").style.display="none"
-        $('#editCloseBtn').click();
+        closeEditButton.click();
         getAdminPage();
     })
 }
