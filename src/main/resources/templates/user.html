@@ -11,19 +11,18 @@
 </head>
 <body>
 <!--navbar-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="row bg-dark">
-            <nav class="navbar navbar-light bg-dark">
-                <div class="container-fluid text-white">
-                    <span th:text="${user.getEmail() + ' with roles:  ' + user.getRolesToString()}"/>
-                    <a th:href="@{/logout}" class="float-right btn text-secondary">Logout</a>
-
-                </div>
-            </nav>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand">
+                <strong id="navbar-email" th:font="bold"></strong>
+                with roles:
+                <span id="navbar-roles"></span>
+            </a>
         </div>
+        <a th:href="@{/logout}" class="float-right btn text-secondary">Logout</a>
     </div>
-</div>
+</nav>
 <!--close navbar-->
 <!--left panel-->
 <div class="container-fluid">
@@ -64,7 +63,7 @@
                                 <th scope="col">Role</th>
                             </tr>
                             </thead>
-                            <tbody id="tbody">
+                            <tbody id="usertbody">
                             </tbody>
                         </table>
                     </div>

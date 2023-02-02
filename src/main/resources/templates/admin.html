@@ -16,19 +16,18 @@
 </head>
 <body>
 <!--  NAVBAR-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="row bg-dark">
-            <nav class="navbar navbar-light bg-dark">
-                <div class="container-fluid text-white">
-                    <span th:text="${userCurrent.getEmail() + ' with roles:  ' + userCurrent.getRolesToString()}"/>
-                    <a th:href="@{/logout}" class="float-right btn text-secondary">Logout</a>
-
-                </div>
-            </nav>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <a class="navbar-brand">
+                <strong id="navbar-email" th:font="bold"></strong>
+                with roles:
+                <span id="navbar-roles"></span>
+            </a>
         </div>
+        <a th:href="@{/logout}" class="float-right btn text-secondary">Logout</a>
     </div>
-</div>
+</nav>
 <!--Navbar close -->
 <div class="container-fluid">
     <div class="row">
@@ -108,7 +107,7 @@
                                             <th>Delete</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="tbody">
+                                        <tbody id="admintbody">
                                         </tbody>
                                     </table>
                                     <!--close all users table-->
@@ -189,6 +188,9 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
                             </tr>
+                            </thead>
+                            <tbody id="usertbody">
+                            </tbody>
                         </table>
                     </div>
                     <!--user tab content close-->
@@ -265,10 +267,10 @@
                                             class="form-select"
                                             size="2">
                                         <option value="2">
-                                            USER
+                                            ADMIN
                                         </option>
                                         <option value="1">
-                                            ADMIN
+                                            USER
                                         </option>
                                     </select>
                                 </div>
@@ -373,6 +375,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="/userJs/userPage.js"></script>
 <script src="/adminJs/adminPage.js"></script>
 <script src="/adminJs/createUserPage.js"></script>
 <script src="/adminJs/editModalPage.js"></script>
