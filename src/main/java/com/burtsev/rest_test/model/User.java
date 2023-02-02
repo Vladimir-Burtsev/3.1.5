@@ -28,9 +28,7 @@ public class User implements UserDetails {
     @Min(value = 0, message = "Age must be greater than 0" )
     private int age;
     @ManyToMany(fetch = FetchType.LAZY)
-//    @NotNull
-    @JoinTable(
-            name = "users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
@@ -38,7 +36,6 @@ public class User implements UserDetails {
     public User() {
     }
 
-    //constructor not password.
     public User(String password, String email, String firstName, String lastName, int age, Set<Role> roles) {
         this.password = password;
         this.email = email;
@@ -139,7 +136,13 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && age == user.age && Objects.equals(password, user.password) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(roles, user.roles);
+        return id == user.id &&
+                age == user.age &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(firstName, user.firstName)
+                && Objects.equals(lastName, user.lastName)
+                && Objects.equals(roles, user.roles);
     }
 
     @Override
