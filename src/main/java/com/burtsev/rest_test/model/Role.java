@@ -14,9 +14,6 @@ public class Role implements GrantedAuthority{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String rolename;
-    @Transient
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users = new ArrayList<>();
 
     public Role() {
     }
@@ -46,14 +43,6 @@ public class Role implements GrantedAuthority{
         this.rolename = rolename;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     @Override
     public String getAuthority() {
         return rolename;
@@ -64,12 +53,12 @@ public class Role implements GrantedAuthority{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return id == role.id && Objects.equals(rolename, role.rolename) && Objects.equals(users, role.users);
+        return id == role.id && Objects.equals(rolename, role.rolename);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rolename, users);
+        return Objects.hash(id, rolename);
     }
 
     @Override
