@@ -1,7 +1,19 @@
-const url = '/api/user';
+const userurl = '/api/user';
+
+const authUser = fetch(userurl).then(response => response.json())
+authUser.then(user => {
+        let roles = ''
+        user.roles.forEach(role => {
+            roles += ' '
+            roles += role.rolename
+        })
+        document.getElementById("navbar-email").innerHTML = user.email
+        document.getElementById("navbar-roles").innerHTML = roles
+    }
+)
 
 async function getUserPage() {
-    let page = await fetch(url);
+    let page = await fetch(userurl);
 
     if(page.ok) {
         let user = await  page.json();
@@ -11,15 +23,16 @@ async function getUserPage() {
     }
 }
 function  getInformationAboutUser(user) {
-    let tr = document.createElement("tr");
+    const tableBody = document.getElementById('usertbody');
+    let dataHtml = '';
     let roles = [];
     console.log('userSata', JSON.stringify(user))
-    for (let role of user.roles) {
+    for (let role of user.roles) {roles
         roles.push(" " + role.rolename.toString()
             .replaceAll("ROLE_", ""))
     }
-    tr.innerHTML =
-        `<tr>
+    dataHtml =
+`<tr>
     <td>${user.id}</td>
     <td>${user.firstName}</td>
     <td>${user.lastName}</td>
@@ -28,6 +41,6 @@ function  getInformationAboutUser(user) {
     <td>${roles}</td>   
 </tr>`
 
-    document.getElementById(`tbody`).append(tr);
+    tableBody.innerHTML = dataHtml;
 }
 getUserPage();

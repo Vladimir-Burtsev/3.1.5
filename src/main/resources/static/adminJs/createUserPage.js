@@ -1,11 +1,7 @@
 const form_new = document.getElementById('formForNewUser');
 const role_new = document.querySelector('#roles').selectedOptions;
 
-
-
-
 form_new.addEventListener('submit', addNewUser);
-
 
 async function addNewUser(event) {
     event.preventDefault();

@@ -1,4 +1,3 @@
-
 const id_del = document.getElementById('id_del');
 const name_del = document.getElementById('name_del');
 const lastname_del = document.getElementById('lastname_del');
@@ -8,7 +7,6 @@ const role_del = document.getElementById("delete-role")
 const deleteModal = document.getElementById("deleteModal");
 const closeDeleteButton = document.getElementById("closeDelete")
 const bsDeleteModal = new bootstrap.Modal(deleteModal);
-
 
 async function deleteModalData(id) {
     const  urlForDel = 'api/admins/users/' + id;
@@ -37,7 +35,6 @@ async function deleteUser() {
             "Content-Type": "application/json"
         }
     }
-
 
     fetch(urlDel, method).then(() => {
         closeDeleteButton.click();
